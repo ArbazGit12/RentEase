@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    /* Signup Card */
+.signup-card {
+    position: relative;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    border: 2px solid #ddd;
+    transition: 
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.3s ease;
+}
+
+/* Hover Effect */
+.signup-card:hover {
+    border-color: #00c6ff;
+    box-shadow: 0 10px 30px rgba(0, 198, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+/* Focus Effect (Best UX for forms) */
+.signup-card:focus-within {
+    border-color: #0074D9;
+    box-shadow: 0 0 0 4px rgba(0, 116, 217, 0.15);
+}
+
+/* Input Styling */
+.signup-card .form-control {
+    border-radius: 0.6rem;
+    padding: 0.65rem 0.75rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-card .form-control:focus {
+    border-color: #0074D9;
+    box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.15);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .signup-card {
+        padding: 1.4rem;
+        border-radius: 1rem;
+    }
+
+    .signup-card h2 {
+        font-size: 1.4rem;
+    }
+}
+
+</style>
+
+<div class="row justify-content-center mt-4">
+    <div class="signup-card col-lg-6 col-md-8 col-sm-10">
+        <h2 class="text-center mb-4">Signup on Wanderlust</h2>
+
+        <form action="/signup" method="post" novalidate class="needs-validation">
+            
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="username" required>
+                <div class="invalid-feedback">Username is required.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" required>
+                <div class="invalid-feedback">Enter a valid email.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" required>
+                <div class="invalid-feedback">Password is required.</div>
+            </div>
+
+            <button class="btn btn-success w-100 mt-2">Signup</button>
+        </form>
+    </div>
+</div>

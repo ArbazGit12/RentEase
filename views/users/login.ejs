@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate") %> <!-- Ejs-mate template used -->
+
+<style>
+.loginStyle {
+    border: 2px solid #0074D9;
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: 
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.loginStyle:hover {
+    border-color: #00c6ff;
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+
+
+</style>
+
+ <div class="row  mt-3 justify-content-center ">
+    <div class="loginStyle col-lg-6 col-md-8 col-xsm-8 col-xlg-6">
+    <h2 class="col-lg-6 col-md-8 col-xsm-8  offset-2 justify-content-center">Login</h2>
+        <div class="col-lg-6 col-md-8 col-xsm-8 col-xlg-6 offset-2">
+            <form action="/login" method="post" novalidate class="needs-validation">
+                 <div class="mb-3"><label for="username" class="form-label"></label>Username</label>
+                    <input type="text" name="username"  class="form-control"  id="username" required>
+                </div>
+
+
+                <div class="mb-3"><label for="password" class="form-label"></label>Password</label>
+                    <input type="password" name="password"  class="form-control"  id="password" required>
+                      
+                </div>
+                <button class="btn btn-success">Login</button>
+            </form>
+            </div>
+            </div>
+            </div>

@@ -1,0 +1,166 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .filter {
+    text-align: center;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .filter:hover {
+    opacity: 1;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  .tax-info {
+    display: none;
+  }
+
+  .listing-card {
+    border: none;
+  }
+
+  .listing-card img {
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+</style>
+
+<!-- ================= FILTERS + TAX TOGGLE ================= -->
+
+<div class="container-fluid px-3 my-3">
+  <div class="row align-items-center gy-3">
+
+    <!-- Filters -->
+    <div class="col-12 col-lg-9">
+      <div class="d-flex flex-wrap gap-4 align-items-center">
+
+        <div class="filter">
+          <i class="fa-solid fa-fire"></i>
+          <p>Trending</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-bed"></i>
+          <p>Rooms</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-mountain-city"></i>
+          <p>Iconic Cities</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-mountain"></i>
+          <p>Mountains</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-fort-awesome"></i>
+          <p>Castles</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-person-swimming"></i>
+          <p>Amazing Pools</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-campground"></i>
+          <p>Camping</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-cow"></i>
+          <p>Farms</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-regular fa-snowflake"></i>
+          <p>Arctic</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-igloo"></i>
+          <p>Domes</p>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-ship"></i>
+          <p>Boats</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tax Toggle -->
+    <div class="col-12 col-lg-3 d-flex justify-content-lg-end justify-content-start">
+      <div class="border rounded-pill px-3 py-2">
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="switchCheckDefault">
+          <label class="form-check-label ms-2" for="switchCheckDefault">
+            Display total after taxes
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+<!-- ================= LISTINGS ================= -->
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+    <% for(let listing of allListings){ %>
+      <div class="col">
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+
+          <div class="card listing-card h-100">
+            <img 
+              src="<%= listing.image.url %>" 
+              class="card-img-top" 
+              alt="listing_img" 
+              style="height: 20rem;"
+            >
+
+            <div class="card-img-overlay d-flex justify-content-end">
+              <i class="fa-regular fa-heart fs-5 text-danger"></i>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= listing.title %></b><br>
+                &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+                <span class="tax-info"> +18% GST</span>
+              </p>
+            </div>
+          </div>
+
+        </a>
+      </div>
+    <% } %>
+
+  </div>
+</div>
+
+<!-- ================= TAX TOGGLE SCRIPT ================= -->
+
+<script>
+  const taxSwitch = document.getElementById("switchCheckDefault");
+
+  taxSwitch.addEventListener("change", () => {
+    const taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      info.style.display =
+        info.style.display === "inline" ? "none" : "inline";
+    }
+  });
+</script>

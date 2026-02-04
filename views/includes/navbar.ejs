@@ -1,0 +1,114 @@
+<style>
+
+/* Navbar Logo Fix */
+.navbar-brand img {
+  height: 45px;        /* Perfect for Bootstrap navbar */
+  width: auto;         /* Maintain aspect ratio */
+  object-fit: contain; /* Prevent distortion */
+}
+
+/* On smaller screens */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    height: 32px;
+  }
+}
+
+ /* Search Group Container */
+.search-group {
+  border-radius: 25px;
+  border: 1.8px solid #ddd;
+  overflow: hidden;
+  transition: 
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.25s ease;
+}
+
+/* Hover Effect */
+.search-group:hover {
+  border-color: #fe424d;
+  box-shadow: 0 6px 18px rgba(254, 66, 77, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Focus Effect (Best UX signal) */
+.search-group:focus-within {
+  border-color: #fe424d;
+  box-shadow: 0 0 0 4px rgba(254, 66, 77, 0.18);
+}
+
+/* Input Reset */
+.search-inp {
+  border: none;
+  border-radius: 0;
+  padding: 0.55rem 1.2rem;
+  font-size: 1rem;
+}
+
+.search-inp:focus {
+  box-shadow: none;
+}
+
+/* Button */
+.search-btn {
+  background-color: #fe424d;
+  color: #fff;
+  border: none;
+  padding: 0 1.4rem;
+  font-weight: 500;
+  transition: background-color 0.25s ease;
+}
+
+.search-btn:hover {
+  background-color: #e63b45;
+}
+
+
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+<a class="navbar-brand d-flex align-items-center" href="/listings">
+  <img 
+    src="/assets/logo.jpeg"
+    alt="Website Logo"
+  >
+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+ 
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+  <div class="input-group search-group">
+    <input 
+      class="form-control search-inp" 
+      type="search" 
+      placeholder="Search destinations"
+      aria-label="Search"
+    >
+    <button class="btn search-btn" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i> Search
+    </button>
+  </div>
+</form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Add new Listing</a>
+        <% if(!currUser) { %>
+        <a class="nav-link"  href="/signup"><b>Signup</b></a>
+        <a class="nav-link" href="/login"><b>Login</b></a>
+       <% } %>
+
+       <% if(currUser) { %>
+        <a class="nav-link" href="/logout"><b>Logout</b></a>
+       <% } %>
+    </div>
+  </div>
+</nav>
