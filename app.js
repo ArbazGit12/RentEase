@@ -62,10 +62,9 @@ const sessionOptions = {
 };
 
 
-// // Root
-// app.get("/", (req, res) => {
-//     res.send("Root Wroking");
-// });
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 
 
 app.use(session(sessionOptions));
